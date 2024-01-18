@@ -9,7 +9,7 @@ function MatchScreen() {
       style={{ justifyContent: "center", alignItems: "center", marginTop: 62 }}
     >
       <AnimatedLogo />
-      <Text style={{ fontSize: 24 }}>Your hearts Boum Boum</Text>
+      <Text style={{ fontSize: 24 }}>Your hearts Boum Boum!</Text>
       <Text style={{ fontSize: 13, textAlign: "center", opacity: 0.6 }}>
         Its a match!
       </Text>
