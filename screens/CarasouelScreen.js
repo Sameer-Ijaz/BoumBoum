@@ -185,12 +185,6 @@ export default function App({ navigation }) {
     }
   });
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      onPress();
-    }, 2000);
-  });
-
   return (
     <View style={{ flex: 1, justifyContent: "flex-start", paddingTop: 100 }}>
       <StatusBar hidden />
