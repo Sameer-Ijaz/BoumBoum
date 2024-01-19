@@ -1,5 +1,5 @@
 import { Text, View, Dimensions, Button } from "react-native";
-import AnimatedLogo from "./components/AnimatedLogo";
+import AnimatedLogo from "../components/AnimatedLogo";
 import { Image, MotiView } from "moti";
 
 function MatchScreen() {
@@ -40,7 +40,7 @@ function MatchScreen() {
             duration: 1000,
             repeat: 1,
           }}
-          source={require("./assets/vinyl.png")}
+          source={require("../assets/vinyl.png")}
         />
       </View>
 
@@ -71,7 +71,7 @@ function MatchScreen() {
             duration: 1000,
             repeat: 1,
           }}
-          source={require("./assets/vinyl.png")}
+          source={require("../assets/vinyl.png")}
         />
       </View>
     </View>
