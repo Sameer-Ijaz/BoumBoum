@@ -9,9 +9,39 @@ import {
 import AnimatedLogo from "../components/AnimatedLogo";
 import { Image, MotiView } from "moti";
 import ReactToMessage from "../components/ReactToMessage";
+import { useEffect, useState } from "react";
+import { Audio } from "expo-av";
+import { Easing } from "react-native-reanimated";
+import AnimatedMusic from "../components/AnimatedMusic";
 
 function MatchScreen() {
   const height = Dimensions.get("screen").height;
+  const [sound, setSound] = useState();
+
+  async function playSound() {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("../assets/vinyl.mp3")
+    );
+    setSound(sound);
+
+    console.log("Playing Sound");
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+    playSound();
+  }, []);
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -37,47 +67,42 @@ function MatchScreen() {
 
         <View
           style={{
-            left: 60,
+            left: 40,
             top: 130,
+            transform: [
+              { scale: 0.6 }, // Note the use of curly braces inside the array
+              { rotate: "50deg" },
+            ],
           }}
         >
           <ReactToMessage size={"small"} />
         </View>
 
         {/* Music Left */}
-        <MotiView
+
+        <View
           style={{
-            position: "absolute",
-            top: height * 0.45,
-            left: 120,
-            transform: [{ rotateX: "6deg" }, { rotateZ: "-30deg" }],
+            left: 40,
+            top: 80,
+            transform: [
+              { scale: 0.6 }, // Note the use of curly braces inside the array
+              { rotate: "-30deg" },
+            ],
           }}
         >
-          <Image
-            style={{
-              width: 100,
-              height: 100,
-              resizeMode: "contain",
-            }}
-            from={{
-              width: 0,
-              height: 0,
-            }}
-            animate={{
-              width: 27,
-              height: 27,
-            }}
-            transition={{
-              type: "spring",
-              duration: 2000,
-              loop: true,
-            }}
-            source={require("../assets/music.png")}
-          />
-        </MotiView>
+          <AnimatedMusic />
+        </View>
+        {/* Muic Right */}
+        <View
+          style={{
+            left: 220,
+            top: 70,
+          }}
+        >
+          <AnimatedMusic />
+        </View>
 
-        {/* Music Right */}
-        <MotiView
+        {/* <MotiView
           style={{
             position: "absolute",
             top: height * 0.35,
@@ -105,7 +130,7 @@ function MatchScreen() {
             }}
             source={require("../assets/music.png")}
           />
-        </MotiView>
+        </MotiView> */}
 
         {/*      
         <MotiView
