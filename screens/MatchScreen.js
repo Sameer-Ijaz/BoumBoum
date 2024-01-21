@@ -11,6 +11,7 @@ import ReactToMessage from "../components/ReactToMessage";
 import { useEffect, useState } from "react";
 import { Audio } from "expo-av";
 import AnimatedMusic from "../components/AnimatedMusic";
+import AnimatedVinyl from "../components/AnimatedVinyl";
 
 function MatchScreen() {
   const height = Dimensions.get("screen").height;
@@ -200,28 +201,7 @@ function MatchScreen() {
             left: -30,
           }}
         >
-          <Image
-            style={{
-              width: 247,
-              height: 247,
-            }}
-            from={{
-              width: 0,
-              height: 0,
-              borderRadius: 50,
-            }}
-            animate={{
-              width: 200,
-              height: 200,
-              borderRadius: 60,
-            }}
-            transition={{
-              type: "timing",
-              duration: 1000,
-              repeat: 1,
-            }}
-            source={require("../assets/vinyl.png")}
-          />
+          <AnimatedVinyl />
         </View>
 
         <View
@@ -231,28 +211,7 @@ function MatchScreen() {
             right: -30,
           }}
         >
-          <Image
-            style={{
-              width: 347,
-              height: 347,
-            }}
-            from={{
-              width: 0,
-              height: 0,
-              borderRadius: 50,
-            }}
-            animate={{
-              width: 200,
-              height: 200,
-              borderRadius: 60,
-            }}
-            transition={{
-              type: "timing",
-              duration: 1000,
-              repeat: 1,
-            }}
-            source={require("../assets/vinyl.png")}
-          />
+          <AnimatedVinyl />
         </View>
       </ImageBackground>
     </View>
