@@ -81,26 +81,7 @@ const ReactToMessage = (size: ReactToMessageProps) => {
             />
           )}
         </TouchableOpacity>
-        {/* <Animated.View
-          style={[
-            styles.loveCountCircle,
-            {
-              transform: [
-                {
-                  translateY: countAnimatedValue,
-                },
-                {
-                  scale: countAnimatedValue.interpolate({
-                    inputRange: [-64, 0],
-                    outputRange: [1, 0],
-                  }),
-                },
-              ],
-            },
-          ]}
-        >
-          <Text style={styles.loveCountText}>{heartCount}</Text>
-        </Animated.View> */}
+
         {hearts.map(({ id }) => (
           <AnimatedHeart
             key={id}

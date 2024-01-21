@@ -2,16 +2,14 @@ import {
   Text,
   View,
   Dimensions,
-  Button,
   ImageBackground,
   StyleSheet,
 } from "react-native";
 import AnimatedLogo from "../components/AnimatedLogo";
-import { Image, MotiView } from "moti";
+import { Image } from "moti";
 import ReactToMessage from "../components/ReactToMessage";
 import { useEffect, useState } from "react";
 import { Audio } from "expo-av";
-import { Easing } from "react-native-reanimated";
 import AnimatedMusic from "../components/AnimatedMusic";
 
 function MatchScreen() {

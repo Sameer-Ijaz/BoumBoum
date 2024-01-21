@@ -13,8 +13,6 @@ import { AntDesign } from "@expo/vector-icons";
 import AnimatedLogo from "../components/AnimatedLogo";
 const { width } = Dimensions.get("window");
 
-const AnimatedAntDesign = Animated.createAnimatedComponent(AntDesign);
-
 const DURATION = 1000;
 const TEXT_DURATION = DURATION * 0.8;
 
@@ -102,47 +100,6 @@ const Circle = ({ onPress, animatedValue, animatedValue2 }) => {
     </Animated.View>
   );
 };
-
-/* 
-initialBgColor -> Big background of the element
-bgColor -> initial circle bg color that will be the next slide initial BG Color
-nextBgColor -> next circle bg color after we fully transition the circle and this will be small again
-prev bgColor === next initialBgColor
-prev nextBgColor === next bgColor
-*/
-
-const colors = [
-  {
-    initialBgColor: "goldenrod",
-    bgColor: "#222",
-    nextBgColor: "#222",
-  },
-  {
-    initialBgColor: "goldenrod",
-    bgColor: "#222",
-    nextBgColor: "yellowgreen",
-  },
-  {
-    initialBgColor: "#222",
-    bgColor: "yellowgreen",
-    nextBgColor: "midnightblue",
-  },
-  {
-    initialBgColor: "yellowgreen",
-    bgColor: "midnightblue",
-    nextBgColor: "turquoise",
-  },
-  {
-    initialBgColor: "midnightblue",
-    bgColor: "turquoise",
-    nextBgColor: "goldenrod",
-  },
-  {
-    initialBgColor: "turquoise",
-    bgColor: "goldenrod",
-    nextBgColor: "#222",
-  },
-];
 
 export default function App({ navigation }) {
   const animatedValue = React.useRef(new Animated.Value(0)).current;
@@ -232,7 +189,6 @@ const styles = StyleSheet.create({
   paragraph: {
     margin: 12,
     fontSize: 24,
-    // fontWeight: 'bold',
     textAlign: "center",
 
     color: "white",

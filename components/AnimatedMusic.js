@@ -1,4 +1,4 @@
-import { MotiView, Image } from "moti";
+import { Image } from "moti";
 import { StyleSheet, View } from "react-native";
 import { Easing } from "react-native-reanimated";
 
