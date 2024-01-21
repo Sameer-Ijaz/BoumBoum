@@ -4,6 +4,7 @@ import {
   Dimensions,
   ImageBackground,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import AnimatedLogo from "../components/AnimatedLogo";
 import { Image } from "moti";
@@ -213,6 +214,37 @@ function MatchScreen() {
         >
           <AnimatedVinyl />
         </View>
+
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            marginTop: 250,
+          }}
+        >
+          <ImageBackground
+            imageStyle={{
+              height: 200,
+            }}
+            style={{
+              width: "100%", // Ensure the ImageBackground takes the full width
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            source={require("../assets/Btn.png")}
+          >
+            <Text
+              style={{
+                textAlign: "center",
+                color: "white",
+                position: "absolute",
+                top: 62,
+              }}
+            >
+              Login With Spotify
+            </Text>
+          </ImageBackground>
+        </TouchableOpacity>
       </ImageBackground>
     </View>
   );
