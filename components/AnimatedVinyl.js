@@ -10,15 +10,28 @@ function AnimatedVinyl() {
   });
 
   useEffect(() => {
-    Animated.loop(
+    const animation = Animated.sequence([
       Animated.timing(vinylAnim, {
-        duration: 7000,
         toValue: 1,
+        duration: 2000,
         easing: Easing.linear,
         useNativeDriver: true,
-      }).start()
-    );
-  }, []);
+      }),
+      Animated.timing(vinylAnim, {
+        toValue: 0, // Reset to the initial value
+        duration: 0, // Set duration to 0 for an instant reset
+        useNativeDriver: true,
+      }),
+    ]);
+
+    const loop = Animated.loop(animation);
+    loop.start();
+
+    // Don't forget to stop the animation when the component unmounts
+    return () => {
+      loop.stop();
+    };
+  }, []); // empty dependency array to run the effect only once when the component mounts
   return (
     <View style={{ flex: 1 }}>
       <Animated.Image
