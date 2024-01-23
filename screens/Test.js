@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 import { Audio } from "expo-av";
 import AnimatedMusic from "../components/AnimatedMusic";
 import AnimatedVinyl from "../components/AnimatedVinyl";
-import { Image } from "moti";
 
 function MatchScreen() {
   const height = Dimensions.get("screen").height;
@@ -46,7 +45,7 @@ function MatchScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../assets/background.png")}
+        source={require("../assets/Match.png")}
         style={styles.imgStyle}
       >
         <View style={{ alignItems: "center", marginTop: 64 }}>
@@ -97,15 +96,6 @@ function MatchScreen() {
         </View>
 
         {/* Vinyl Left */}
-        <Image
-          style={{
-            left: -50,
-            zIndex: 1000,
-            bottom: Platform.OS === "ios" ? -30 : 0,
-            transform: [{ scale: 0.7 }],
-          }}
-          source={require("../assets/leftvinyl.png")}
-        />
         <View
           style={{
             position: "absolute",
@@ -115,17 +105,7 @@ function MatchScreen() {
         >
           <AnimatedVinyl />
         </View>
-        <Image
-          style={{
-            alignSelf: "flex-end",
 
-            right: -50,
-            bottom: Platform.OS === "ios" ? height * 0.38 : height * 0.4,
-            zIndex: 1000,
-            transform: [{ scale: 0.7 }],
-          }}
-          source={require("../assets/rightvinyl.png")}
-        />
         {/* Vinyl Right */}
         <View
           style={{
@@ -136,31 +116,37 @@ function MatchScreen() {
         >
           <AnimatedVinyl />
         </View>
-        <ImageBackground
-          source={require("../assets/Btn.png")}
-          imageStyle={{ resizeMode: "contain" }}
+
+        <TouchableOpacity
           style={{
-            width: "100%", // Make the button span the entire width
-            alignItems: "center",
+            flex: 1,
             justifyContent: "center",
-            alignContent: "center",
-
-            height: 250,
-            width: "100%",
-
-            bottom: Platform.OS === "android" ? height * 0.34 : height * 0.3,
+            marginTop: 250,
           }}
         >
-          <Text
-            style={{
-              textAlign: "center",
-              color: "white",
-              bottom: 20,
+          <ImageBackground
+            imageStyle={{
+              height: 200,
             }}
+            style={{
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            source={require("../assets/Btn.png")}
           >
-            Login With Spotify
-          </Text>
-        </ImageBackground>
+            <Text
+              style={{
+                textAlign: "center",
+                color: "white",
+                position: "absolute",
+                top: 62,
+              }}
+            >
+              Login With Spotify
+            </Text>
+          </ImageBackground>
+        </TouchableOpacity>
       </ImageBackground>
     </View>
   );

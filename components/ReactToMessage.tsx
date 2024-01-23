@@ -4,7 +4,6 @@ import {
   Platform,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   Animated,

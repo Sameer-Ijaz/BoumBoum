@@ -9,24 +9,13 @@ import {
   StyleSheet,
 } from "react-native";
 import Constants from "expo-constants";
-import { AntDesign } from "@expo/vector-icons";
 import AnimatedLogo from "../components/AnimatedLogo";
 const { width } = Dimensions.get("window");
 
 const DURATION = 1000;
 const TEXT_DURATION = DURATION * 0.8;
 
-const quotes = [
-  {
-    quote:
-      "For the things we have to learn before we can do them, we learn by doing them.",
-    author: "Aristotle, The Nicomachean Ethics",
-  },
-  {
-    quote: "The fastest way to build an app.",
-    author: "The Expo Team",
-  },
-];
+const inputRangeData = [1, 2];
 
 const Circle = ({ onPress, animatedValue, animatedValue2 }) => {
   const backgroundColor = "#222";
@@ -70,7 +59,6 @@ const Circle = ({ onPress, animatedValue, animatedValue2 }) => {
           },
         ]}
       >
-        {/* Conditionally render the button based on animatedValue */}
         {animatedValue._value === 0 && (
           <TouchableOpacity onPress={onPress}>
             <Animated.View
@@ -105,7 +93,7 @@ export default function App({ navigation }) {
   const animatedValue = React.useRef(new Animated.Value(0)).current;
   const animatedValue2 = React.useRef(new Animated.Value(0)).current;
   const sliderAnimatedValue = React.useRef(new Animated.Value(0)).current;
-  const inputRange = [...Array(quotes.length).keys()];
+  const inputRange = [...Array(inputRangeData.length).keys()];
   const [index, setIndex] = React.useState(0);
 
   const animate = (i) =>
@@ -136,7 +124,7 @@ export default function App({ navigation }) {
   };
 
   animatedValue2.addListener(({ value }) => {
-    if (value >= 0.99) {
+    if (value >= 0.98) {
       // The animation is almost complete, navigate to the next screen
       navigation.navigate("MatchScreen");
     }
@@ -148,7 +136,7 @@ export default function App({ navigation }) {
       <Circle
         index={index}
         onPress={onPress}
-        quotes={quotes}
+        inputRangeData={inputRangeData}
         animatedValue={animatedValue}
         animatedValue2={animatedValue2}
       />
@@ -159,16 +147,16 @@ export default function App({ navigation }) {
             {
               translateX: sliderAnimatedValue.interpolate({
                 inputRange,
-                outputRange: quotes.map((_, i) => -i * width * 2),
+                outputRange: inputRangeData.map((_, i) => -i * width * 2),
               }),
             },
           ],
           opacity: sliderAnimatedValue.interpolate({
-            inputRange: [...Array(quotes.length * 2 + 1).keys()].map(
+            inputRange: [...Array(inputRangeData.length * 2 + 1).keys()].map(
               (i) => i / 2
             ),
-            outputRange: [...Array(quotes.length * 2 + 1).keys()].map((i) =>
-              i % 2 === 0 ? 1 : 0
+            outputRange: [...Array(inputRangeData.length * 2 + 1).keys()].map(
+              (i) => (i % 2 === 0 ? 1 : 0)
             ),
           }),
         }}

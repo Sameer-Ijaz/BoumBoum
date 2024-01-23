@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { StyleSheet, View, Image, Animated } from "react-native";
+import { StyleSheet, View, Animated } from "react-native";
 import { Easing } from "react-native-reanimated";
 
 function AnimatedVinyl() {
@@ -7,6 +7,10 @@ function AnimatedVinyl() {
   const vinylAnimInterPolated = vinylAnim.interpolate({
     inputRange: [0, 1],
     outputRange: ["0deg", "360deg"],
+  });
+
+  vinylAnim.addListener(() => {
+    return;
   });
 
   useEffect(() => {
@@ -27,7 +31,6 @@ function AnimatedVinyl() {
     const loop = Animated.loop(animation);
     loop.start();
 
-    // Don't forget to stop the animation when the component unmounts
     return () => {
       loop.stop();
     };
